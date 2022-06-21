@@ -3,7 +3,11 @@ package com.example.tempapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,18 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAuth.signInWithEmailAndPassword("muhammadbilal@gmail.com","12345678")
-                .addOnCompleteListener(this,new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isComplete()){
-                    Toast.makeText(getApplicationContext(),"completed",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
 
     }
     @Override
